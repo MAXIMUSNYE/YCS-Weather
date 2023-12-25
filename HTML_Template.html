@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wind Rose Example</title>
+    <style>
+        /* Styles for the whole page when printed in color */
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Styles for specific elements when printed in color */
+        table {
+            width: 100%; /* Make the table cover the whole width */
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f0f0f0; /* Light gray background color for header */
+        }
+
+        /* Styles for the image container */
+        .image-container {
+            flex: 1;
+            max-width: 25%; /* One-quarter of the screen width */
+            margin-right: 20px; /* Add some spacing between image and text */
+            overflow: hidden; /* Ensure the image does not exceed its container */
+        }
+
+        .image-container img {
+            width: 100%; /* Make the image fill the container */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* You can add more styles for other elements as needed */
+    </style>
+</head>
+<body>
+    <div style="display: flex;">
+        <!-- Left Column: Image -->
+        <div class="image-container">
+            <img src="wind_rose.jpeg" alt="Wind Rose">
+        </div>
+
+        <!-- Right Column: Paragraph -->
+        <div style="flex: 2; padding: 20px;">
+            <p><p>Today: Patchy fog before 11am. Otherwise, mostly sunny, with a high near 19. Wind chill values as low as -10. Light and variable wind becoming west 5 to 7 mph in the afternoon.
+
+                <br/><br/>Tonight: Partly cloudy, with a low around 5. Wind chill values as low as -5. South southwest wind 6 to 8 mph.
+                
+                <br/><br/>Christmas Day: Mostly sunny, with a high near 21. Wind chill values as low as -5. South southwest wind around 6 mph becoming northwest in the afternoon.
+                
+                <br/>Monday Night: Mostly clear, with a low around 6. Wind chill values as low as -5. South wind around 7 mph.
+                
+                <br/>Tuesday: A 20 percent chance of snow after 11am. Mostly sunny, with a high near 28. South wind around 7 mph.
+                
+                <br/>Tuesday Night: Partly cloudy, with a low around 12. South southwest wind around 7 mph.
+                
+                <br/>Wednesday: Sunny, with a high near 32. South wind 6 to 11 mph.
+                
+                <br/>Wednesday Night: Partly cloudy, with a low around 17. South southeast wind around 11 mph.
+                
+                <br/>Thursday: A slight chance of snow after 11am. Partly sunny, with a high near 33.
+                
+                <br/>Thursday Night: A chance of snow, mainly before 11pm. Partly cloudy, with a low around 16.
+                
+                <br/>Friday: Mostly sunny, with a high near 29.
+                
+                <br/>Friday Night: Mostly clear, with a low around 14.
+                
+                <br/>Saturday: Mostly sunny, with a high near 32.
+                
+                <br/>
+        </div>
+    </div>
+
+    <!-- Image above the chart -->
+    <div class="image-container" style="width: 100%; max-width: 100%;">
+        <img src="meterio.jpg" alt="Meteorological Data">
+    </div>
+
+    <!-- ASCII Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Day</th>
+                <th>Hour</th>
+                <th>Ridge_Speed</th>
+                <th>Ridge_dir</th>
+                <th>Ridge_Gust</th>
+                <th>TW_Speed</th>
+                <th>TW_Dir</th>
+                <th>TW_Gust</th>
+                <th>AVG_Temp</th>
+                <th>AVG_RH</th>
+                <th>H2O</th>
+                <th>NewSnow</th>
+                <th>TotalSnow</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- CSV_TABLE_DATA -->
+        </tbody>
+        </tbody>
+    </table>
+</body>
+</html>

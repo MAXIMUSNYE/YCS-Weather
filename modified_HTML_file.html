@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wind Rose Example</title>
+    <style>
+        /* Styles for the whole page when printed in color */
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Styles for specific elements when printed in color */
+        table {
+            width: 100%; /* Make the table cover the whole width */
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f0f0f0; /* Light gray background color for header */
+        }
+
+        /* Styles for the image container */
+        .image-container {
+            flex: 1;
+            max-width: 25%; /* One-quarter of the screen width */
+            margin-right: 20px; /* Add some spacing between image and text */
+            overflow: hidden; /* Ensure the image does not exceed its container */
+        }
+
+        .image-container img {
+            width: 100%; /* Make the image fill the container */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* You can add more styles for other elements as needed */
+    </style>
+</head>
+<body>
+    <div style="display: flex;">
+        <!-- Left Column: Image -->
+        <div class="image-container">
+            <img src="wind_rose.jpeg" alt="Wind Rose">
+        </div>
+
+        <!-- Right Column: Paragraph -->
+        <div style="flex: 2; padding: 20px;">
+            <p><p>Today: Patchy fog before 11am. Otherwise, mostly sunny, with a high near 19. Wind chill values as low as -10. Light and variable wind becoming west 5 to 7 mph in the afternoon.
+
+                <br/><br/>Tonight: Partly cloudy, with a low around 5. Wind chill values as low as -5. South southwest wind 6 to 8 mph.
+                
+                <br/><br/>Christmas Day: Mostly sunny, with a high near 21. Wind chill values as low as -5. South southwest wind around 6 mph becoming northwest in the afternoon.
+                
+                <br/>Monday Night: Mostly clear, with a low around 6. Wind chill values as low as -5. South wind around 7 mph.
+                
+                <br/>Tuesday: A 20 percent chance of snow after 11am. Mostly sunny, with a high near 28. South wind around 7 mph.
+                
+                <br/>Tuesday Night: Partly cloudy, with a low around 12. South southwest wind around 7 mph.
+                
+                <br/>Wednesday: Sunny, with a high near 32. South wind 6 to 11 mph.
+                
+                <br/>Wednesday Night: Partly cloudy, with a low around 17. South southeast wind around 11 mph.
+                
+                <br/>Thursday: A slight chance of snow after 11am. Partly sunny, with a high near 33.
+                
+                <br/>Thursday Night: A chance of snow, mainly before 11pm. Partly cloudy, with a low around 16.
+                
+                <br/>Friday: Mostly sunny, with a high near 29.
+                
+                <br/>Friday Night: Mostly clear, with a low around 14.
+                
+                <br/>Saturday: Mostly sunny, with a high near 32.
+                
+                <br/>
+        </div>
+    </div>
+
+    <!-- Image above the chart -->
+    <div class="image-container" style="width: 100%; max-width: 100%;">
+        <img src="meterio.jpg" alt="Meteorological Data">
+    </div>
+
+    <!-- ASCII Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Day</th>
+                <th>Hour</th>
+                <th>Ridge_Speed</th>
+                <th>Ridge_dir</th>
+                <th>Ridge_Gust</th>
+                <th>TW_Speed</th>
+                <th>TW_Dir</th>
+                <th>TW_Gust</th>
+                <th>AVG_Temp</th>
+                <th>AVG_RH</th>
+                <th>H2O</th>
+                <th>NewSnow</th>
+                <th>TotalSnow</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+<td>Month</td>
+<td>Day</td>
+<td>Hour</td>
+<td>Ridge_Speed</td>
+<td>Ridge_dir</td>
+<td>Ridge_Gust</td>
+<td>TW_Speed</td>
+<td>TW_Dir</td>
+<td>TW_Gust</td>
+<td>AVG_Temp</td>
+<td>AVG_RH</td>
+<td>H2O</td>
+<td>NewSnow</td>
+<td>ToatalSnow</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>600</td>
+<td>9</td>
+<td>268</td>
+<td>21</td>
+<td>2</td>
+<td>296</td>
+<td>16</td>
+<td>24</td>
+<td>92</td>
+<td>0.11</td>
+<td>2</td>
+<td>22.6</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>700</td>
+<td>15</td>
+<td>286</td>
+<td>23</td>
+<td>8</td>
+<td>297</td>
+<td>20</td>
+<td>19</td>
+<td>94</td>
+<td>0.06</td>
+<td>3</td>
+<td>24.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>800</td>
+<td>18</td>
+<td>307</td>
+<td>25</td>
+<td>15</td>
+<td>320</td>
+<td>27</td>
+<td>15</td>
+<td>94</td>
+<td>0.00</td>
+<td>2</td>
+<td>24.3</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>900</td>
+<td>16</td>
+<td>303</td>
+<td>25</td>
+<td>12</td>
+<td>324</td>
+<td>26</td>
+<td>13</td>
+<td>93</td>
+<td>0.00</td>
+<td>2</td>
+<td>24.1</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>1000</td>
+<td>9</td>
+<td>319</td>
+<td>18</td>
+<td>11</td>
+<td>320</td>
+<td>20</td>
+<td>13</td>
+<td>92</td>
+<td>0.00</td>
+<td>1</td>
+<td>23.7</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>1100</td>
+<td>7</td>
+<td>330</td>
+<td>16</td>
+<td>8</td>
+<td>318</td>
+<td>17</td>
+<td>13</td>
+<td>91</td>
+<td>0.01</td>
+<td>0</td>
+<td>23.6</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>1200</td>
+<td>6</td>
+<td>336</td>
+<td>15</td>
+<td>8</td>
+<td>324</td>
+<td>19</td>
+<td>12</td>
+<td>90</td>
+<td>0.00</td>
+<td>0</td>
+<td>23.6</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>1300</td>
+<td>7</td>
+<td>335</td>
+<td>19</td>
+<td>10</td>
+<td>327</td>
+<td>20</td>
+<td>12</td>
+<td>90</td>
+<td>0.00</td>
+<td>1</td>
+<td>23.6</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>1400</td>
+<td>9</td>
+<td>308</td>
+<td>17</td>
+<td>8</td>
+<td>329</td>
+<td>19</td>
+<td>11</td>
+<td>90</td>
+<td>0.01</td>
+<td>1</td>
+<td>23.8</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>1500</td>
+<td>5</td>
+<td>325</td>
+<td>15</td>
+<td>6</td>
+<td>332</td>
+<td>15</td>
+<td>11</td>
+<td>89</td>
+<td>0.01</td>
+<td>1</td>
+<td>23.7</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>1600</td>
+<td>6</td>
+<td>319</td>
+<td>14</td>
+<td>6</td>
+<td>320</td>
+<td>12</td>
+<td>10</td>
+<td>90</td>
+<td>0.00</td>
+<td>2</td>
+<td>23.4</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>1700</td>
+<td>7</td>
+<td>335</td>
+<td>15</td>
+<td>9</td>
+<td>325</td>
+<td>16</td>
+<td>9</td>
+<td>91</td>
+<td>0.00</td>
+<td>2</td>
+<td>24.1</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>1800</td>
+<td>10</td>
+<td>342</td>
+<td>25</td>
+<td>10</td>
+<td>322</td>
+<td>17</td>
+<td>9</td>
+<td>91</td>
+<td>0.00</td>
+<td>2</td>
+<td>24.6</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>1900</td>
+<td>9</td>
+<td>340</td>
+<td>18</td>
+<td>10</td>
+<td>323</td>
+<td>21</td>
+<td>9</td>
+<td>91</td>
+<td>0.00</td>
+<td>2</td>
+<td>24.8</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>2000</td>
+<td>6</td>
+<td>348</td>
+<td>14</td>
+<td>7</td>
+<td>335</td>
+<td>21</td>
+<td>9</td>
+<td>91</td>
+<td>0.03</td>
+<td>2</td>
+<td>25.1</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>2100</td>
+<td>8</td>
+<td>339</td>
+<td>16</td>
+<td>7</td>
+<td>326</td>
+<td>17</td>
+<td>9</td>
+<td>91</td>
+<td>0.02</td>
+<td>3</td>
+<td>25.4</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>2200</td>
+<td>7</td>
+<td>355</td>
+<td>17</td>
+<td>8</td>
+<td>324</td>
+<td>17</td>
+<td>8</td>
+<td>91</td>
+<td>0.00</td>
+<td>3</td>
+<td>25.3</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>2300</td>
+<td>9</td>
+<td>327</td>
+<td>14</td>
+<td>10</td>
+<td>317</td>
+<td>19</td>
+<td>7</td>
+<td>91</td>
+<td>0.00</td>
+<td>3</td>
+<td>25.4</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23</td>
+<td>2400</td>
+<td>7</td>
+<td>346</td>
+<td>13</td>
+<td>7</td>
+<td>325</td>
+<td>15</td>
+<td>7</td>
+<td>90</td>
+<td>0.00</td>
+<td>3</td>
+<td>25.5</td>
+</tr>
+<tr>
+<td>12</td>
+<td>24</td>
+<td>100</td>
+<td>8</td>
+<td>334</td>
+<td>14</td>
+<td>8</td>
+<td>319</td>
+<td>14</td>
+<td>6</td>
+<td>90</td>
+<td>0.00</td>
+<td>3</td>
+<td>25.4</td>
+</tr>
+<tr>
+<td>12</td>
+<td>24</td>
+<td>200</td>
+<td>7</td>
+<td>339</td>
+<td>12</td>
+<td>7</td>
+<td>320</td>
+<td>13</td>
+<td>6</td>
+<td>90</td>
+<td>0.00</td>
+<td>2</td>
+<td>25.3</td>
+</tr>
+<tr>
+<td>12</td>
+<td>24</td>
+<td>300</td>
+<td>6</td>
+<td>326</td>
+<td>15</td>
+<td>7</td>
+<td>311</td>
+<td>13</td>
+<td>6</td>
+<td>88</td>
+<td>0.00</td>
+<td>2</td>
+<td>25.3</td>
+</tr>
+<tr>
+<td>12</td>
+<td>24</td>
+<td>400</td>
+<td>5</td>
+<td>344</td>
+<td>12</td>
+<td>3</td>
+<td>332</td>
+<td>10</td>
+<td>6</td>
+<td>88</td>
+<td>0.00</td>
+<td>2</td>
+<td>25.1</td>
+</tr>
+<tr>
+<td>12</td>
+<td>24</td>
+<td>500</td>
+<td>5</td>
+<td>328</td>
+<td>10</td>
+<td>3</td>
+<td>317</td>
+<td>8</td>
+<td>5</td>
+<td>87</td>
+<td>0.00</td>
+<td>2</td>
+<td>25.1</td>
+</tr>
+<tr>
+<td>12</td>
+<td>24</td>
+<td>600</td>
+<td>4</td>
+<td>323</td>
+<td>8</td>
+<td>3</td>
+<td>313</td>
+<td>8</td>
+<td>4</td>
+<td>88</td>
+<td>0.00</td>
+<td>2</td>
+<td>25.1</td>
+</tr>
+
+        </tbody>
+        </tbody>
+    </table>
+</body>
+</html>
