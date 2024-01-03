@@ -10,7 +10,6 @@ import io
 #       add 24 hour high low avrade and daily toatals
 #       ** fix hour raph and color code for night
 #       fix wind chill math
-#       
 
 # def calculate_wind_chill(temperature, wind_speed):
 
