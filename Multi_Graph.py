@@ -12,9 +12,21 @@ import io
 #       fix wind chill math
 #       
 
-def calculate_wind_chill(temperature, wind_speed):
+# def calculate_wind_chill(temperature, wind_speed):
 
-    return 13.12 + 0.6215 * temperature - 11.37 * (wind_speed ** 0.16) + 0.3965 * temperature * (wind_speed ** 0.16)
+#     return 13.12 + 0.6215 * temperature - 11.37 * (wind_speed ** 0.16) + 0.3965 * temperature * (wind_speed ** 0.16)
+
+def calculate_wind_chill(temperature, wind_speed):
+    """
+    Calculate wind chill using the National Weather Service formula.
+
+    :param temperature: Temperature in degrees Fahrenheit
+    :param wind_speed: Wind speed in miles per hour
+    :return: Wind chill in degrees Fahrenheit
+    """
+    wind_chill = 35.74 + 0.6215 * temperature - 35.75 * (wind_speed ** 0.16) + 0.4275 * temperature * (wind_speed ** 0.16)
+    return wind_chill
+
 
 def plot_data_from_csv():
     # Reading the data from the CSV content
@@ -25,14 +37,15 @@ def plot_data_from_csv():
 
     # Creating a figure with 3 subplots
     fig = plt.figure(figsize=(20, 8))
-    gs = fig.add_gridspec(4, hspace=0)
+    gs = fig.add_gridspec(4, hspace=0.0)
     axs = gs.subplots(sharex=True)
+
 
     # Plotting Wind Speed
     axs[0].plot(data['Hour'], data['Ridge_Speed'], marker='o', color='blue', label= 'AVG Wind')
     axs[0].plot(data['Hour'], data['Ridge_Gust'], marker='x', color='black', label= 'Gust')
     #axs[0].set_title('Ridge_Speed')
-    axs[0].set_ylabel('Speed (km/h)')
+    axs[0].set_ylabel('Ridge Speed (mph)')#, rotation='horizontal', labelpad=20)
     axs[0].set_yticks([0,5,10,15,20,25,30,35,40] )
     axs[0].legend()
     axs[0].grid(True)
@@ -41,7 +54,7 @@ def plot_data_from_csv():
     axs[1].plot(data['Hour'], data['AVG_Temp'], marker='o', color='red', label='AVG_Temp')
     axs[1].plot(data['Hour'], data['Wind Chill (°C)'], marker='x', color='purple', label='Wind Chill (°C)')
     #axs[1].set_title('Temperature and Wind Chill')
-    axs[1].set_ylabel('Degrees (°F)')
+    axs[1].set_ylabel('Degrees (°F)')#, rotation='horizontal', labelpad=20)
     #axs[1].set_yticks([-20,-10,0,10,20,30,40,50])
     axs[1].legend()
     axs[1].grid(True)
@@ -64,7 +77,7 @@ def plot_data_from_csv():
     axs[2].fill_between(data['Hour'], data['NewSnow'], color='green', alpha=0.3)
     #axs[2].set_title('NewSnow')
     axs[2].set_xlabel('Hour')
-    axs[2].set_ylabel('NewSnow')
+    axs[2].set_ylabel('NewSnow' )#, rotation='horizontal', labelpad=20)
     #axs[2].set_yticks([0,2,4,6,8,10,12,14,16,18,20,22,24])
     axs[2].set_yticks([0,5,10,15,20,25])
     axs[2].grid(True)
@@ -75,9 +88,24 @@ def plot_data_from_csv():
 
     axs[3].bar(data['Hour'], data['H2O'], color='red', zorder = 2 )# marker='o',
     #axs[3].set_title('Snow Water Equiv.')
-    axs[3].set_ylabel('Inches')
+    axs[3].set_ylabel('Inches')#, rotation='horizontal', labelpad=20)
+
+    # Add additional notes or text on the side of the graph
+    #fig.text(0.01, 0.52, 'Your notes here', ha='left', va='center', rotation='horizontal')
+
 #    axs[3].set_yticks([0,5,10,15,20,25,30,35,40] )
     axs[3].grid(True, zorder=1)
+
+
+    # for ax in axs:
+    #     # Get the bounding box in figure coordinates
+    #     bbox = ax.get_tightbbox(fig.canvas.get_renderer())
+    #     x0, y0, width, height = bbox.transformed(fig.transFigure.inverted()).bounds
+    #     # slightly increase the very tight bounds:
+    #     xpad = 0.05 * width
+    #     ypad = 0.05 * height
+    #     # Add the rectangle
+    #     fig.add_artist(plt.Rectangle((x0-xpad, y0-ypad), width+3.32*xpad, height+6*ypad, edgecolor='red', linewidth=2, fill=False))
 
 
     # Adjust layout

@@ -1,5 +1,14 @@
 import csv
 
+
+
+#
+#TODO make merged cells across rows for day like saterday , sundat then with the hours oin each row, then merged on headders 
+#for like Ridge Wind - speed , dir, gust
+#
+#
+
+
 def update_html_with_csv_data(csv_file_path, html_template_path, output_html_path):
     """
     Reads data from a CSV file and updates an HTML template with this data.
@@ -12,7 +21,7 @@ def update_html_with_csv_data(csv_file_path, html_template_path, output_html_pat
     # Read CSV data
     with open(csv_file_path, newline='') as csvfile:
         reader = csv.reader(csvfile)
-        csv_data = list(reader)
+        csv_data = list(reader)[1:]
 
     # Read HTML template from file
     with open(html_template_path, 'r', encoding='utf-8') as template_file:
@@ -34,7 +43,7 @@ def update_html_with_csv_data(csv_file_path, html_template_path, output_html_pat
         file.write(updated_html)
 
 # Paths to your files
-csv_file_path = 'weather_data.csv'
+csv_file_path = 'Fancy_CSV.csv'
 html_template_path = 'HTML_Template.html'  # Replace with the path to your HTML template file
 output_html_path = 'modified_HTML_file.html'
 

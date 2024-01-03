@@ -7,7 +7,7 @@
         body {
             background-color: white;
             color: black;
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         /* Styles for specific elements when printed in color */
@@ -39,11 +39,22 @@
             width: 100%; /* Make the image fill the container */
             height: auto; /* Maintain aspect ratio */
         }
-
+        hr {
+            border: 1px solid #333; /* Set the border color */
+            margin: 5px 0; /* Adjust the margin for spacing above and below */
+        }
+        #myText {
+            color: rgb(0, 0, 0); /* Text color */
+            font-size: 12px; /* Font size */
+            font-weight: bold; /* Font weight */
+            font-family: monospace;
+        }
         /* You can add more styles for other elements as needed */
     </style>
 </head>
 <body>
+    <p id="myText">YCSP Timberline Weather Report - Last Update 10:24am December 25th 2023</p>
+    <hr>
     <div style="display: flex;">
         <!-- Left Column: Image -->
         <div class="image-container">
@@ -91,9 +102,7 @@
     <table>
         <thead>
             <tr>
-                <th>Month</th>
-                <th>Day</th>
-                <th>Hour</th>
+                <th>Date_Time</th>
                 <th>Ridge_Speed</th>
                 <th>Ridge_dir</th>
                 <th>Ridge_Gust</th>
