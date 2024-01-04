@@ -1,6 +1,6 @@
 import csv
 
-
+from NOAA_forcast import shortcast_get
 
 #
 #TODO make merged cells across rows for day like saterday , sundat then with the hours oin each row, then merged on headders 
@@ -49,4 +49,31 @@ output_html_path   = 'modified_HTML_file.html'
 
 update_html_with_csv_data(csv_file_path, html_template_path, output_html_path)
 
+# Define the path to your HTML file
+html_file_path = output_html_path
 
+# Read the HTML file
+with open(html_file_path, 'r', encoding='utf-8') as file:
+    html_content = file.read()
+
+# Define a function to perform text replacements and save the modified content
+def replace_and_save_html(content, data):
+    count = 1
+    for row in data:
+        content = content.replace(f"mini_fourcast_day{count}", row[0])
+        content = content.replace(f"mini_fourcast_words{count}", row[1])
+        content = content.replace(f"HI_LO_{count}", row[2])
+        count += 1
+    return content
+
+# Get data from shortcast_get() function
+shortcast_data = shortcast_get()
+
+# Replace placeholders and save the modified HTML content
+modified_html_content = replace_and_save_html(html_content, shortcast_data)
+
+# Write the modified HTML content back to the file
+with open(html_file_path, 'w', encoding='utf-8') as file:
+    file.write(modified_html_content)
+
+print("Text replaced and HTML file saved successfully.")
