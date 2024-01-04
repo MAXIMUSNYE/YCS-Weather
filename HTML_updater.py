@@ -43,8 +43,10 @@ def update_html_with_csv_data(csv_file_path, html_template_path, output_html_pat
         file.write(updated_html)
 
 # Paths to your files
-csv_file_path = 'Fancy_CSV.csv'
+csv_file_path      = 'Fancy_CSV.csv'
 html_template_path = 'HTML_Template.html'  # Replace with the path to your HTML template file
-output_html_path = 'modified_HTML_file.html'
+output_html_path   = 'modified_HTML_file.html'
 
 update_html_with_csv_data(csv_file_path, html_template_path, output_html_path)
+
+
