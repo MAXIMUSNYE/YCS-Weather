@@ -30,6 +30,7 @@ def calculate_wind_chill(temperature, wind_speed):
 def plot_data_from_csv():
     # Reading the data from the CSV content
     data = pd.read_csv("weather_data.csv")
+    hrlables = list(data['Hour'])
     data['Hour'] = range(len(data))                                   ######___-----##_
 
     data['Wind Chill (°C)'] = calculate_wind_chill(data['AVG_Temp'], data['Ridge_Speed'])
@@ -67,6 +68,8 @@ def plot_data_from_csv():
 
     for i in range(len(hour)):
         axs[1].text(hour[i], avg_temp[i], f'{avg_temp[i]}°F', fontsize=12, va='bottom', ha='left')
+        axs[1].text(hour[i], wind_chill[i], f'{int(wind_chill[i])}°F', fontsize=12, va='top', ha='right')
+
         #axs[1].text(hour[i], wind_chill[i], f'{wind_chill[i]}°C', fontsize=12, va='top', ha='left')
 
 
@@ -76,18 +79,29 @@ def plot_data_from_csv():
     axs[2].fill_between(data['Hour'], data['NewSnow'], color='green', alpha=0.3)
     #axs[2].set_title('NewSnow')
     axs[2].set_xlabel('Hour')
-    axs[2].set_ylabel('NewSnow' )#, rotation='horizontal', labelpad=20)
+    axs[2].set_ylabel('Inches New Snow' )#, rotation='horizontal', labelpad=20)
     #axs[2].set_yticks([0,2,4,6,8,10,12,14,16,18,20,22,24])
     axs[2].set_yticks([0,5,10,15,20,25])
     axs[2].grid(True)
 
     # Setting x-axis labels for every hour
     axs[2].set_xticks(data['Hour'])
-
+    axs[2].set_xticklabels(hrlables)
 
     axs[3].bar(data['Hour'], data['H2O'], color='red', zorder = 2 )# marker='o',
+
+
+    label_text = f'Toatal SWE {sum(list(data["H2O"]))}'
+    label_color = 'black'
+    bbox_props = dict(boxstyle="square,pad=0.3", edgecolor=label_color, facecolor="white")
+
+    # Add the labeled box to the top right corner
+    axs[3].text(0.99, 0.93, label_text, transform=axs[3].transAxes,
+                fontsize=12, color=label_color, ha='right', va='top', bbox=bbox_props)
+
+
     #axs[3].set_title('Snow Water Equiv.')
-    axs[3].set_ylabel('Inches')#, rotation='horizontal', labelpad=20)
+    axs[3].set_ylabel('Inches SWE')#, rotation='horizontal', labelpad=20)
 
     # Add additional notes or text on the side of the graph
     #fig.text(0.01, 0.52, 'Your notes here', ha='left', va='center', rotation='horizontal')
