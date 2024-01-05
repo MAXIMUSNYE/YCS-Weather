@@ -112,7 +112,7 @@ def plot_data_from_csv():
     # Add additional notes or text on the side of the graph
     #fig.text(0.01, 0.52, 'Your notes here', ha='left', va='center', rotation='horizontal')
 
-#    axs[3].set_yticks([0,5,10,15,20,25,30,35,40] )
+    axs[3].set_yticks([0.02,0.04,0.06,0.08,0.1,0.12,0.14] )
     axs[3].grid(True, zorder=1)
 
 

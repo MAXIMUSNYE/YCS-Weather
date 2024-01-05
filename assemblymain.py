@@ -20,3 +20,4 @@ def refresh_YCWD():
     else:
         print('Failed to retrieve the web page. Status code:', response.status_code)
 
+refresh_YCWD()
