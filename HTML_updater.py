@@ -67,7 +67,16 @@ def replace_and_save_html(content, data):
     return content
 
 # Get data from shortcast_get() function
-shortcast_data = shortcast_get()
+# shortcast_data = [["ChristmasDay", "Rain", "High: 48 °F"],
+# ["Tonight", "Rain", "Low: 47 °F"],
+# ["Tuesday", "Rain", "High: 51 °F"],
+# ["Tuesday Night", "Rain", "Low: 44 °F"],
+# ["Wednesday", "Rain Likely", "High: 51 °F"],
+# ["Wednesday Night", "Rain", "Low: 45 °F"],
+# ["Thursday", "Rain", "High: 53 °F"],
+# ["Thursday Night", "Chance Rain", "Low: 44 °F"],
+# ["Friday", "Slight ChanceRain", "High: 53 °F"]]
+shortcast_data =  shortcast_get()
 
 # Replace placeholders and save the modified HTML content
 modified_html_content = replace_and_save_html(html_content, shortcast_data)

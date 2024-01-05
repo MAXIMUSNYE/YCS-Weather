@@ -15,8 +15,8 @@
         table {
         width: 100%; /* Keep the table width */
         border-collapse: collapse;
-        margin-bottom: 20px;
-        margin-top: 15;
+        margin-bottom: 5px;
+        margin-top: 5;
     }
 
     th, td {
@@ -137,18 +137,25 @@
     <table>
         <thead>
             <tr>
-                <th>Date_Time</th>
-                <th>Ridge_Speed</th>
-                <th>Ridge_dir</th>
-                <th>Ridge_Gust</th>
-                <th>TW_Speed</th>
-                <th>TW_Dir</th>
-                <th>TW_Gust</th>
-                <th>AVG_Temp</th>
-                <th>AVG_RH</th>
+                <th rowspan="2"> Time/Day</th>
+                <th colspan="2">Air</th>
+                <th colspan="3">Snow</th>
+                <th colspan="3">Ridge Wind</th>
+                <th colspan="3"> Timberline Wind</th>
+            </tr>
+            <tr>
+                
+                <th>Temp</th>
+                <th>RH</th>
                 <th>H2O</th>
-                <th>NewSnow</th>
-                <th>TotalSnow</th>
+                <th>New</th>
+                <th>Toatal</th>
+                <th>Speed</th>
+                <th>dir</th>
+                <th>Gust</th>
+                <th>Speed</th>
+                <th>Dir</th>
+                <th>Gust</th>
             </tr>
         </thead>
         <tbody>

@@ -1,6 +1,5 @@
 import csv
 import shutil
-
 import datetime
 import pandas as pd
 
@@ -91,6 +90,8 @@ df = pd.read_csv(input_file)
 
 wind_degrees = list(df['Ridge_dir'])
 cardinal_directions = [wind_direction_to_cardinal(d) for d in wind_degrees]
+wind_degrees = list(df['TW_Dir'])
+cardinal_directions = [wind_direction_to_cardinal(d) for d in wind_degrees]
 
 print(cardinal_directions)
 
@@ -98,6 +99,8 @@ print(cardinal_directions)
 new_column_data = daterow
 
 # Insert the new column as the first column in the DataFrame
+df.drop(df.columns[7], axis=1, inplace=True)
+df.insert(7, 'TW_Dir', cardinal_directions)
 df.drop(df.columns[4], axis=1, inplace=True)
 df.insert(4, 'Ridge_dir', cardinal_directions)
 df.insert(0, 'DateTime', new_column_data)
@@ -107,7 +110,7 @@ print()
 df.drop(df.columns[1], axis=1, inplace=True)
 df.drop(df.columns[1], axis=1, inplace=True)
 df.drop(df.columns[1], axis=1, inplace=True)
-############# - - - - - - - - - - - -   df = df[['DateTime','AVG_Temp','AVG_RH','H2O','NewSnow','ToatalSnow','Ridge_Speed','Ridge_dir','Ridge_Gust','TW_Speed','TW_Dir','TW_Gust']]
+df = df[['DateTime','AVG_Temp','AVG_RH','H2O','NewSnow','ToatalSnow','Ridge_Speed','Ridge_dir','Ridge_Gust','TW_Speed','TW_Dir','TW_Gust']]
 df_reversed = df.iloc[::-1].reset_index(drop=True)
 
 # Save the updated DataFrame to a new CSV file

@@ -71,8 +71,14 @@ def plot_data_from_csv():
         axs[1].text(hour[i], wind_chill[i], f'{int(wind_chill[i])}°F', fontsize=12, va='top', ha='right')
 
         #axs[1].text(hour[i], wind_chill[i], f'{wind_chill[i]}°C', fontsize=12, va='top', ha='left')
+        ttlsnownum = list(data['ToatalSnow'])[-1]
+        label_text = f'New Snow {list(data["NewSnow"])[-1]}"\n ttl Snow {ttlsnownum}"'
+        label_color = 'black'
+        bbox_props = dict(boxstyle="square,pad=0.3", edgecolor=label_color, facecolor="white")
 
-
+        # Add the labeled box to the top right corner
+        axs[3].text(0.99, 0.93, label_text, transform=axs[2].transAxes,
+                    fontsize=12, color=label_color, ha='right', va='top', bbox=bbox_props)
 
     # Plotting Precipitation with fill
     axs[2].plot(data['Hour'], data['NewSnow'], marker='o', color='green')
@@ -91,7 +97,7 @@ def plot_data_from_csv():
     axs[3].bar(data['Hour'], data['H2O'], color='red', zorder = 2 )# marker='o',
 
 
-    label_text = f'Toatal SWE {sum(list(data["H2O"]))}'
+    label_text = f'Toatal SWE {sum(list(data["H2O"]))}"'
     label_color = 'black'
     bbox_props = dict(boxstyle="square,pad=0.3", edgecolor=label_color, facecolor="white")
 
