@@ -51,8 +51,20 @@ def create_wind_rose(directions, speeds):
     # Scatter plot
     sc = ax.scatter(directions, speeds, c=colors, s=sizes, alpha=0.8, edgecolors='black')
 
+
+    # bar_width = np.pi / 50  # Adjust the width of each bar
+    # for i in range(len(directions)):
+    #     ax.bar(directions[i], speeds[i], width=bar_width, color=colors[i], edgecolor='grey', alpha=0.8)
+
+    # #start_angle = 2  # Arrow starts from the center
+    # #start_speed = 10  # Arrow starts from the center
+    # #dx = np.cos(start_angle) * 5  # Smaller x component of direction vector
+    # #dy = np.sin(start_angle) * 5  # Smaller y component of direction vector
+
+    # ax.quiver((list(directions)[-1]),20, color='lightgray', scale=0.5, scale_units='xy', width=0.015)
+
     radial_values = [0, 10, 20, 30, 40]
-    ax.set_yticks(radial_values)
+    ax.set_yticks(radial_values)  
 
     # Set the label for each 45 degrees
     ax.set_theta_zero_location('N')
@@ -87,6 +99,3 @@ def create_wind_rose(directions, speeds):
 filename = 'weather_data.csv'
 directions, speeds = read_wind_data(filename)
 create_wind_rose(directions, speeds)
-
-
-
