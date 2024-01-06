@@ -5,6 +5,7 @@ import csv
 yc = 'https://forecast.weather.gov/MapClick.php?lat=45.2258&lon=-111.3949&unit=0&lg=english&FcstType=text&TextType=1'
 
 url = 'https://forecast.weather.gov/MapClick.php?lon=-111.4418981802124&lat=45.242171405990916'
+#https://forecast.weather.gov/MapClick.php?lon=-111.44276842781188&lat=45.24088227128141
 response = requests.get(url)
 
 # Check if the request was successful (status code 200)
