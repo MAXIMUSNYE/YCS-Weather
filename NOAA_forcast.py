@@ -44,7 +44,7 @@ def shortcast_get():
 
 def shortcast_get():
     soup = BeautifulSoup(response.text, 'html.parser')
-    print(soup)
+    #print(soup)
 
     forecast_data = []
     for div in soup.find_all('div', class_='tombstone-container'):

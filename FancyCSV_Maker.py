@@ -28,6 +28,15 @@ def format_DT(rowlist):
     else:
         return formatted_date_time_str
     
+def format_DT(rowlist):
+    from datetime import datetime
+    current_year = datetime.now().year
+    date_components = rowlist
+    month, day, hour = map(int, date_components)
+    formatted_date_time = datetime(current_year, month, day, hour)
+    formatted_date_time_str = formatted_date_time.strftime("%I:%M %a")
+    return formatted_date_time_str
+    
 def wind_direction_to_cardinal(degrees):
     """
     Convert wind direction in degrees to cardinal direction.

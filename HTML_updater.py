@@ -8,6 +8,37 @@ from NOAA_forcast import shortcast_get
 #
 #
 
+def get_timestamp():
+
+    import datetime
+
+    def format_current_datetime():
+        # Get the current date and time
+        dt = datetime.datetime.now()
+
+        # Define a function to get the day suffix
+        def get_day_suffix(day):
+            if 4 <= day <= 20 or 24 <= day <= 30:
+                return "th"
+            else:
+                return ["st", "nd", "rd"][day % 10 - 1]
+
+        # Format the datetime except for the day part
+        formatted_date = dt.strftime(f'%I:%M%p %A %B {dt.day}')
+        # Get the day suffix
+        day_suffix = get_day_suffix(dt.day)
+
+        fdt = formatted_date + day_suffix + dt.strftime(' %Y')
+        if fdt[0] == "0":
+            fdt = fdt[1:]
+
+        return fdt
+
+    # Get and print the formatted current datetime
+    current_formatted_dt = format_current_datetime()
+    print(current_formatted_dt)
+    return current_formatted_dt
+
 
 def update_html_with_csv_data(csv_file_path, html_template_path, output_html_path):
     """
@@ -58,6 +89,7 @@ with open(html_file_path, 'r', encoding='utf-8') as file:
 
 # Define a function to perform text replacements and save the modified content
 def replace_and_save_html(content, data):
+    content = content.replace(f"FMTCNTDTNOW", get_timestamp())
     content = content.replace(f"zday1", day1)
     content = content.replace(f"zcast1", cast1)
     content = content.replace(f"zday2", day2)
@@ -91,3 +123,4 @@ with open(html_file_path, 'w', encoding='utf-8') as file:
     file.write(modified_html_content)
 
 print("Text replaced and HTML file saved successfully.")
+
