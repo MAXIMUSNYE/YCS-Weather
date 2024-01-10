@@ -1,5 +1,5 @@
 import csv
-
+from NOAA_longText import day1, cast1, day2, cast2
 from NOAA_forcast import shortcast_get
 
 #
@@ -58,6 +58,11 @@ with open(html_file_path, 'r', encoding='utf-8') as file:
 
 # Define a function to perform text replacements and save the modified content
 def replace_and_save_html(content, data):
+    content = content.replace(f"zday1", day1)
+    content = content.replace(f"zcast1", cast1)
+    content = content.replace(f"zday2", day2)
+    content = content.replace(f"zcast2", cast2)
+
     count = 1
     for row in data:
         content = content.replace(f"mini_fourcast_day{count}", row[0])

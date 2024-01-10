@@ -97,7 +97,7 @@ def plot_data_from_csv():
     axs[3].bar(data['Hour'], data['H2O'], color='red', zorder = 2 )# marker='o',
 
 
-    label_text = f'Toatal SWE {sum(list(data["H2O"]))}"'
+    label_text = f'Total SWE {sum(list(data["H2O"]))}"'
     label_color = 'black'
     bbox_props = dict(boxstyle="square,pad=0.3", edgecolor=label_color, facecolor="white")
 

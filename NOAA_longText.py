@@ -6,7 +6,7 @@
 
 bend = "https://forecast.weather.gov/MapClick.php?lat=44.06&lon=-121.3&unit=0&lg=english&FcstType=text&TextType=1"
 bozeman = "https://forecast.weather.gov/MapClick.php?lat=45.6835&lon=-111.0505&unit=0&lg=english&FcstType=text&TextType=1"
-yc = 'https://forecast.weather.gov/MapClick.php?lat=45.2258&lon=-111.3949&unit=0&lg=english&FcstType=text&TextType=1'
+yc = 'https://forecast.weather.gov/MapClick.php?lat=45.2422&lon=-111.4419&unit=0&lg=english&FcstType=text&TextType=1'
 
 import requests
 from bs4 import BeautifulSoup
