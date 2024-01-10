@@ -49,7 +49,7 @@ def create_wind_rose(directions, speeds):
     sizes = speeds * 15  # Scale dot sizes
 
     # Scatter plot
-    sc = ax.scatter(directions, speeds, c=colors, s=sizes, alpha=0.8, edgecolors='black')
+    sc = ax.scatter(directions, speeds, c=colors, s=sizes, alpha=0.8, edgecolors='black',zorder=3)
 
 
     # bar_width = np.pi / 50  # Adjust the width of each bar
@@ -85,7 +85,7 @@ def create_wind_rose(directions, speeds):
         4: 'EXT'
     }
 
-    legend_elements = [Line2D([0], [0], marker='o', color='w', label=legend_labels[i], markersize=10, markerfacecolor=color_mapping.get(i, default_color)) for i in range(1, 5)]
+    legend_elements = [Line2D([0], [0], marker='o', color='w', label=legend_labels[i], markersize=10, markerfacecolor=color_mapping.get(i, default_color),markeredgecolor='black') for i in range(1, 5)]
 
     ax.legend(handles=legend_elements, loc='lower left', title='', bbox_to_anchor=(-0.2, -0.13), fancybox=False, shadow=False, frameon=False, ncol=4, columnspacing=0.1) #SWAG Wind Class
 

@@ -21,3 +21,12 @@ def refresh_YCWD():
         print('Failed to retrieve the web page. Status code:', response.status_code)
 
 refresh_YCWD()
+
+import Wind_Rose
+import matplotlib
+from Multi_Graph import plot_data_from_csv
+plot_data_from_csv()
+import FancyCSV_Maker
+import HTML_updater
+
+print("Done")

@@ -29,6 +29,9 @@ def calculate_wind_chill(temperature, wind_speed):
 
 def plot_data_from_csv():
     # Reading the data from the CSV content
+    plt.rcParams['font.size'] = 10
+    plt.rcParams['font.family'] = 'sans-serif'
+    #plt.rcParams['font.family'] = 'Helvetica'
     data = pd.read_csv("weather_data.csv")
     hrlables = list(data['Hour'])
     data['Hour'] = range(len(data))                                   ######___-----##_
@@ -52,7 +55,7 @@ def plot_data_from_csv():
 
     # Plotting Temperature and Wind Chill
     axs[1].plot(data['Hour'], data['AVG_Temp'], marker='o', color='red', label='AVG_Temp')
-    axs[1].plot(data['Hour'], data['Wind Chill (°C)'], marker='x', color='purple', label='Wind Chill (°C)')
+    axs[1].plot(data['Hour'], data['Wind Chill (°C)'], marker='x', color='purple', label='Wind Chill (°F)')
     #axs[1].set_title('Temperature and Wind Chill')
     axs[1].set_ylabel('Degrees (°F)')#, rotation='horizontal', labelpad=20)
     #axs[1].set_yticks([-20,-10,0,10,20,30,40,50])
@@ -96,8 +99,8 @@ def plot_data_from_csv():
 
     axs[3].bar(data['Hour'], data['H2O'], color='red', zorder = 2 )# marker='o',
 
-
-    label_text = f'Total SWE {sum(list(data["H2O"]))}"'
+    label_text = f'Total SWE {sum(list(data["H2O"])):.2f}"'
+    #label_text = f'Total SWE {sum(list(data["H2O"]))}"'
     label_color = 'black'
     bbox_props = dict(boxstyle="square,pad=0.3", edgecolor=label_color, facecolor="white")
 
@@ -112,7 +115,14 @@ def plot_data_from_csv():
     # Add additional notes or text on the side of the graph
     #fig.text(0.01, 0.52, 'Your notes here', ha='left', va='center', rotation='horizontal')
 
-    axs[3].set_yticks([0.0,0.025,0.05,0.075,0.1,0.125,0.15] )
+  #  axs[3].set_yticks([0.0,0.025,0.05,0.075,0.1,0.125,0.15] )
+    yticks = [0.0, 0.05, 0.1, 0.15, 0.2]
+    axs[3].set_yticks(yticks)
+
+    # Set custom y-tick labels with the top label left blank
+    ytick_labels = ['0.0', '0.05', '0.1', '0.15', '']
+    axs[3].set_yticklabels(ytick_labels)
+
     axs[3].grid(True, zorder=1)
 
 

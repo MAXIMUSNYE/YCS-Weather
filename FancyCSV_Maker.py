@@ -102,7 +102,7 @@ cardinal_directions = [wind_direction_to_cardinal(d) for d in wind_degrees]
 wind_degrees = list(df['TW_Dir'])
 cardinal_directions = [wind_direction_to_cardinal(d) for d in wind_degrees]
 
-print(cardinal_directions)
+#print(cardinal_directions)
 
 # Create a new column from the provided list
 new_column_data = daterow
