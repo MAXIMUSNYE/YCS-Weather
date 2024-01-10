@@ -34,7 +34,7 @@ def format_DT(rowlist):
     date_components = rowlist
     month, day, hour = map(int, date_components)
     formatted_date_time = datetime(current_year, month, day, hour)
-    formatted_date_time_str = formatted_date_time.strftime("%I:%M %a")
+    formatted_date_time_str = formatted_date_time.strftime("%H:%M %a")
     return formatted_date_time_str
     
 def wind_direction_to_cardinal(degrees):

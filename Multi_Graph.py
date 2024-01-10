@@ -143,4 +143,3 @@ def plot_data_from_csv():
     #plt.show()
 
 plot_data_from_csv()
-
