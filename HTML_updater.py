@@ -36,7 +36,7 @@ def get_timestamp():
 
     # Get and print the formatted current datetime
     current_formatted_dt = format_current_datetime()
-    print(current_formatted_dt)
+    #print(current_formatted_dt)
     return current_formatted_dt
 
 
@@ -95,11 +95,13 @@ def replace_and_save_html(content, data):
     content = content.replace(f"zday2", day2)
     content = content.replace(f"zcast2", cast2)
 
+    if len(data) == 8:
+        data.append(['None','None', 'None'])
     count = 1
     for row in data:
-        content = content.replace(f"mini_fourcast_day{count}", row[0])
-        content = content.replace(f"mini_fourcast_words{count}", row[1])
-        content = content.replace(f"HI_LO_{count}", row[2])
+        content = content.replace(f"mini_fourcast_day{count}", row[0] if row[0] else "none")
+        content = content.replace(f"mini_fourcast_words{count}", row[1] if row[1] else "none")
+        content = content.replace(f"HI_LO_{count}", row[2] if row[2] else "none")
         count += 1
     return content
 

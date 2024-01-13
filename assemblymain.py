@@ -27,6 +27,11 @@ import matplotlib
 from Multi_Graph import plot_data_from_csv
 plot_data_from_csv()
 import FancyCSV_Maker
-import HTML_updater
+from HTML_updater import get_timestamp
 
 print("Done")
+
+
+print('\n',get_timestamp(),'\n')
+
+

@@ -16,6 +16,7 @@ from bs4 import BeautifulSoup
 
 
 url = yc
+url = 'https://forecast.weather.gov/MapClick.php?lon=-111.4418981802124&lat=45.242171405990916&unit=0&lg=english&FcstType=text&TextType=1'
 
 def gettext():
     text2 = ""
@@ -72,6 +73,8 @@ def gettext():
 
 text = gettext()
 
+#
+# print(text)
 
 splitrpt = text.splitlines()
 # print(splitrpt[0].split(":")[4].split(" ")[-1][4:])
@@ -87,11 +90,6 @@ import re
 def remove_lowercase_prefix(s):
     return re.sub(r'^[a-z]+', '', s)
 
-# Example usage
-original_string = "seljsflToday"
-modified_string = remove_lowercase_prefix(original_string)
-
-
 day1 = remove_lowercase_prefix(splitrpt[0].split(":")[4].split(" ")[-1][4:])
 cast1 = splitrpt[0].split(":")[5]
 day2 = splitrpt[2].split(":")[0]
@@ -101,3 +99,4 @@ vars = [day1,cast1,day2,cast2]
 
 # for i in vars:
 #     print("\n",i)
+print('NOAA td tmr forcast')

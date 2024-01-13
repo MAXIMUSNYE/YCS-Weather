@@ -42,28 +42,31 @@ def shortcast_get():
     return forecast_data
 
 
-def shortcast_get():
-    soup = BeautifulSoup(response.text, 'html.parser')
-    #print(soup)
+# def shortcast_get():
+#     soup = BeautifulSoup(response.text, 'html.parser')
+#     #print(soup)
 
-    forecast_data = []
-    for div in soup.find_all('div', class_='tombstone-container'):
-        period_name = (div.find('p', class_='period-name').get_text()).replace('yN', 'y N')
+#     forecast_data = []
+#     for div in soup.find_all('div', class_='tombstone-container'):
+#         period_name = (div.find('p', class_='period-name').get_text()).replace('yN', 'y N')
         
-        # Find short description
-        short_desc = div.find('p', class_='short-desc')
-        if short_desc:
-            short_desc = short_desc.get_text()
-        else:
-            short_desc = "N/A"  # Or any default value you want to use
+#         # Find short description
+#         short_desc = div.find('p', class_='short-desc')
+#         if short_desc:
+#             short_desc = short_desc.get_text()
+#         else:
+#             short_desc = "N/A"  # Or any default value you want to use
 
-        # Find temperature
-        temp = div.find('p', class_='temp')
-        if temp:
-            temp = temp.get_text()
-        else:
-            temp = "N/A"  # Or any default value you want to use
+#         # Find temperature
+#         temp = div.find('p', class_='temp')
+#         if temp:
+#             temp = temp.get_text()
+#         else:
+#             temp = "N/A"  # Or any default value you want to use
 
-        forecast_data.append([period_name, short_desc, temp])
+#         forecast_data.append([period_name, short_desc, temp])
 
-    return forecast_data
+#     return forecast_data
+
+
+print("NOAA weeks forcast")

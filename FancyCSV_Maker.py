@@ -114,7 +114,7 @@ df.drop(df.columns[4], axis=1, inplace=True)
 df.insert(4, 'Ridge_dir', cardinal_directions)
 df.insert(0, 'DateTime', new_column_data)
 
-print()
+#print()
 
 df.drop(df.columns[1], axis=1, inplace=True)
 df.drop(df.columns[1], axis=1, inplace=True)
@@ -126,9 +126,9 @@ df_reversed = df.iloc[::-1].reset_index(drop=True)
 output_file = "Fancy_CSV.csv"
 df_reversed.to_csv(output_file, index=False)
 
-print(f"New column added as the first column, and data saved to {output_file}.")
+#print(f"New column added as the first column, and data saved to {output_file}.")
 
-
+print("fancy CSV formatted")
 # wind_degrees = list(df['Ridge_dir'])
 # RidgeSpeed = list(df['Ridge_Speed'])
 # conc_windspeed = []
