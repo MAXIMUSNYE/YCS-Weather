@@ -87,7 +87,8 @@ def create_wind_rose(directions, speeds):
     # Convert the direction from degrees to radians
     direction_radians = np.deg2rad(direction_degrees)
 
-    ax.quiver(0, 0, direction_radians, length, angles='xy', scale_units='xy', scale=1, color='lightgreen', width=0.015, zorder = 3, alpha=0.9)
+    #ax.quiver(0, 0, direction_radians, length + 0.9, angles='xy', scale_units='xy', scale=1, color='black', width=0.017, zorder = 3, alpha=0.7)
+    ax.quiver(0, 0, direction_radians, length, angles='xy', scale_units='xy', scale=1, color='blue', width=0.015, zorder = 4, alpha=0.6)
 
     # for i in range(len(directions)):
     #     sc.quiver(directions,20, color='lightgray', scale=0.5, scale_units='xy', width=0.015)
