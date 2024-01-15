@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.lines import Line2D
 import matplotlib as mpl
+import math
 
 mpl.rcParams['font.size'] = 18  # Adjust the font size as needed
 mpl.rcParams['font.family'] = 'Helvetica'  # Use the Helvetica font family
@@ -18,12 +19,13 @@ def read_wind_data(filename):
             speed = float(row['Ridge_Speed'])
             # Cap wind speeds at 40
             if speed > 40:
-                speed = 40
+                speed = 41
             speeds.append(speed)
     return np.array(directions), np.array(speeds)
 
 def create_wind_rose(directions, speeds):
     # Subtract 180 degrees from the directions
+    ddirections = directions
     directions = np.radians(directions - 180)
 
     # Create a polar plot
@@ -62,8 +64,30 @@ def create_wind_rose(directions, speeds):
     #dy = np.sin(start_angle) * 5  # Smaller y component of direction vector
 
 #    ax.quiver((list(directions)[-1]),20, color='lightgray', scale=0.5, scale_units='xy', width=0.015)
-    ax.quiver(10,10, color='lightgray', scale=0.5, scale_units='xy', width=0.015)
 
+
+
+    # direction_radians = (np.mean(ddirections))
+    # print(direction_radians)
+    # direction_radians = math.radians(direction_radians)
+
+    # length = np.mean(speeds)
+    # x = length * math.cos(direction_radians)
+    # y = length * math.sin(direction_radians)
+    # print(direction_radians,'\n', ddirections , length)
+
+    # print(f'x: {x}, y: {y}')
+
+    # ax.quiver([100,52],1800, color='lightgray')
+
+        
+    direction_degrees = np.mean(ddirections) - 180 #45  # Replace with your desired direction in degrees
+    length = np.mean(speeds)
+
+    # Convert the direction from degrees to radians
+    direction_radians = np.deg2rad(direction_degrees)
+
+    ax.quiver(0, 0, direction_radians, length, angles='xy', scale_units='xy', scale=1, color='lightgreen', width=0.015, zorder = 3, alpha=0.9)
 
     # for i in range(len(directions)):
     #     sc.quiver(directions,20, color='lightgray', scale=0.5, scale_units='xy', width=0.015)
