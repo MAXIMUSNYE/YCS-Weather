@@ -8,7 +8,7 @@ def refresh_YCWD():
     text = (response.text)
 
     if response.status_code == 200:
-        lines = text.strip().split('\n')
+        lines = text.replace("-6999","0").strip().split('\n')
         header = ["Month","Day","Hour","Ridge_Speed","Ridge_dir","Ridge_Gust","TW_Speed","TW_Dir","TW_Gust","AVG_Temp","AVG_RH","H2O","NewSnow","ToatalSnow"]
         data_lines = [line.strip().split() for line in lines[7:]]
 

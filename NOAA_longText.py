@@ -91,6 +91,7 @@ def remove_lowercase_prefix(s):
     return re.sub(r'^[a-z]+', '', s)
 
 day1 = remove_lowercase_prefix(splitrpt[0].split(":")[4].split(" ")[-1][4:])
+
 cast1 = splitrpt[0].split(":")[5]
 day2 = splitrpt[2].split(":")[0]
 cast2 = splitrpt[2].split(":")[1]

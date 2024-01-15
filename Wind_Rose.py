@@ -61,14 +61,15 @@ def create_wind_rose(directions, speeds):
     #dx = np.cos(start_angle) * 5  # Smaller x component of direction vector
     #dy = np.sin(start_angle) * 5  # Smaller y component of direction vector
 
-    #ax.quiver((list(directions)[-1]),20, color='lightgray', scale=0.5, scale_units='xy', width=0.015)
+#    ax.quiver((list(directions)[-1]),20, color='lightgray', scale=0.5, scale_units='xy', width=0.015)
+    ax.quiver(10,10, color='lightgray', scale=0.5, scale_units='xy', width=0.015)
 
 
     # for i in range(len(directions)):
     #     sc.quiver(directions,20, color='lightgray', scale=0.5, scale_units='xy', width=0.015)
 
 
-    print(directions)
+    #print(directions)
 
     radial_values = [0, 10, 20, 30, 40]
     ax.set_yticks(radial_values)  
@@ -98,12 +99,13 @@ def create_wind_rose(directions, speeds):
 
 
     # Save the plot as a JPEG image
-    #plt.savefig('wind_rose.jpeg', dpi=300)  # You can adjust the DPI (dots per inch) for image quality
+    plt.savefig('wind_rose.jpeg', dpi=300)  # You can adjust the DPI (dots per inch) for image quality
 
-    plt.show()
+    #plt.show()
 
 # Replace 'your_data.csv' with the path to your CSV file
 filename = 'weather_data.csv'
 directions, speeds = read_wind_data(filename)
 create_wind_rose(directions, speeds)
 print("Genarate Wind Rose")
+

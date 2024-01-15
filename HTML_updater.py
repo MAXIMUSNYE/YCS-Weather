@@ -1,6 +1,7 @@
 import csv
 from NOAA_longText import day1, cast1, day2, cast2
 from NOAA_forcast import shortcast_get
+from avy_simple_forcast_get import color, line
 
 #
 #TODO make merged cells across rows for day like saterday , sundat then with the hours oin each row, then merged on headders 
@@ -23,7 +24,9 @@ def get_timestamp():
             else:
                 return ["st", "nd", "rd"][day % 10 - 1]
 
-        # Format the datetime except for the day part
+        current_date_time = datetime.datetime.now()
+        julian_day = current_date_time.timetuple().tm_yday
+        print('Current Julian day:', julian_day)
         formatted_date = dt.strftime(f'%I:%M%p %A %B {dt.day}')
         # Get the day suffix
         day_suffix = get_day_suffix(dt.day)
@@ -90,6 +93,8 @@ with open(html_file_path, 'r', encoding='utf-8') as file:
 # Define a function to perform text replacements and save the modified content
 def replace_and_save_html(content, data):
     content = content.replace(f"FMTCNTDTNOW", get_timestamp())
+    content = content.replace(f"avyforcasttitle", line)
+    content = content.replace(f"avyforcastcolor", color)
     content = content.replace(f"zday1", day1)
     content = content.replace(f"zcast1", cast1)
     content = content.replace(f"zday2", day2)
@@ -126,3 +131,4 @@ with open(html_file_path, 'w', encoding='utf-8') as file:
 
 print("Text replaced and HTML file saved successfully.")
 
+#avyforcasttitle
