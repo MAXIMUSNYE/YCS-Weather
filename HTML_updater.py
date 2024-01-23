@@ -2,7 +2,6 @@ import csv
 from NOAA_longText import day1, cast1, day2, cast2
 from NOAA_forcast import shortcast_get
 from avy_simple_forcast_get import color, line
-
 #
 #TODO make merged cells across rows for day like saterday , sundat then with the hours oin each row, then merged on headders 
 #for like Ridge Wind - speed , dir, gust
@@ -92,6 +91,8 @@ with open(html_file_path, 'r', encoding='utf-8') as file:
 
 # Define a function to perform text replacements and save the modified content
 def replace_and_save_html(content, data):
+    a =  "Â"
+    
     content = content.replace(f"FMTCNTDTNOW", get_timestamp())
     content = content.replace(f"avyforcasttitle", line)
     content = content.replace(f"avyforcastcolor", color)
@@ -104,10 +105,13 @@ def replace_and_save_html(content, data):
         data.append(['None','None', 'None'])
     count = 1
     for row in data:
+        for item in row:
+            item = item.replace(a,'')
         content = content.replace(f"mini_fourcast_day{count}", row[0] if row[0] else "none")
         content = content.replace(f"mini_fourcast_words{count}", row[1] if row[1] else "none")
         content = content.replace(f"HI_LO_{count}", row[2] if row[2] else "none")
         count += 1
+    
     return content
 
 # Get data from shortcast_get() function

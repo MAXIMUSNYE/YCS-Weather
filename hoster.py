@@ -6,6 +6,8 @@ import shutil
 import threading
 import requests
 import sys
+import io
+#sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 #import assemblymain
 for i in range(0,9999999999999999999):
     import subprocess
@@ -62,7 +64,7 @@ for i in range(0,9999999999999999999):
 
     # Set the port number and duration (in seconds)
     port = 8000
-    duration = 30  # One minute (60 seconds)
+    duration = 300  # One minute (60 seconds)
 
     # Copy the HTML file
     source_file = "modified_HTML_file.html"  # Replace with the source file path
