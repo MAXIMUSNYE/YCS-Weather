@@ -35,7 +35,7 @@ def start_local_server(port=8000):
     print(f"Local server is running at: {url}")
 
     # Open the web browser to the server URL
-    #webbrowser.open(url)
+    webbrowser.open(url)
 
     try:
         # Serve the files indefinitely until interrupted
