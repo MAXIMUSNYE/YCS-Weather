@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YCSP Weather Report</title>
+    <link rel="icon" href="7216381.png" type="image/png">
+    <style>
+        /* Styles for the whole page when printed in color */
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .forcastcolor {
+        background-color: orange;
+        }
+        .corner-icon {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            z-index: 1000;
+            width: 20px;  /* Adjust as needed */
+            height: auto; /* This will maintain the aspect ratio */
+        }
+        /* Styles for specific elements when printed in color */
+        table {
+        width: 100%; /* Keep the table width */
+        border-collapse: collapse;
+        margin-bottom: 5px;
+        margin-top: 5;
+    }
+
+    th, td {
+        padding: 5px; /* Reduced padding for less space around text */
+        text-align: left;
+        border: 1px solid #ccc;
+        font-size: 14px; /* Smaller font size */
+    }
+
+    th {
+        background-color: #f0f0f0; /* Light gray background color for header */
+    }
+        /* Styles for the image container */
+        .image-container {
+            flex: 1;
+            max-width: 25%; /* One-quarter of the screen width */
+            margin-right: -20px; /* Add some spacing between image and text */
+            overflow: hidden; /* Ensure the image does not exceed its container */
+        }
+
+        .image-container img {
+            width: 100%; /* Make the image fill the container */
+            height: auto; /* Maintain aspect ratio */
+        }
+        hr {
+            border: 1px solid #333; /* Set the border color */
+            margin: 5px 0; /* Adjust the margin for spacing above and below */
+        }
+        #myText {
+            color: rgb(0, 0, 0); /* Text color */
+            font-size: 12px; /* Font size */
+            font-weight: bold; /* Font weight */
+            font-family: monospace;
+        }
+        /* You can add more styles for other elements as needed */
+    </style>
+</head>
+<body>
+    <img src="7216381.png" class="corner-icon" alt="Icon">
+    <p id="myText">YCSP Timberline Weather Report - Last Update 11:55AM Tuesday January 23rd 2024</p>
+    <hr>
+    <div style="display: flex;">
+        <!-- Left Column: Image -->
+        <div class="image-container">
+            <img src="wind_rose.jpeg" alt="Wind Rose">
+        </div>
+
+        <!-- Right Column: Paragraph -->
+        <div style="flex: 2; padding: 20px;">
+            <!-- New Table for Weather Report -->
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="6">YCSP Timberline NOAA Weather Forcast </th>
+                        <th colspan="3" class="forcastcolor">Considerable</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td colspan="9"> Mostly cloudy, with a high near 30. West southwest wind around 6 mph. .</td>
+                    </tr>
+                    <tr>
+                        <td>Tonight</td>
+                        <td colspan="9"> Mostly cloudy, with a low around 21. West southwest wind around 6 mph. </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <thead>
+                                    <tr>
+                                        <th>ThisAfternoon</th>
+                                        <th>Tonight</th>
+                                        <th>Wednesday</th>
+                                        <th>Wednesday Night</th>
+                                        <th>Thursday</th>
+                                        <th>Thursday Night</th>
+                                        <th>Friday</th>
+                                        <th>Friday Night</th>
+                                        <th>Saturday</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                <td>Mostly Cloudy</td>
+                <td>Mostly Cloudy</td>
+                <td>Slight ChanceSnow</td>
+                <td>Chance Snow</td>
+                <td>Snow Likely</td>
+                <td>Slight ChanceSnow thenPartly Cloudy</td>
+                <td>Mostly Sunny</td>
+                <td>Partly Cloudy</td>
+                <td>Mostly Sunny</td>
+                </tr>
+                <tr>
+                    <td>High: 30 °F</td>
+                    <td>Low: 21 °F</td>
+                    <td>High: 29 °F</td>
+                    <td>Low: 22 °F</td>
+                    <td>High: 28 °F</td>
+                    <td>Low: 17 °F</td>
+                    <td>High: 26 °F</td>
+                    <td>Low: 16 °F</td>
+                    <td>High: 30 °F</td>
+                    </tr><!-- Continue adding rows for each day... -->
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Image above the chart -->
+    <div class="image-container" style="width: 100%; max-width: 100%;">
+        <img src="meterio.jpg" alt="Meteorological Data">
+    </div>
+
+    <!-- ASCII Table -->
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2"> Time/Day</th>
+                <th colspan="2">Air</th>
+                <th colspan="3">Snow</th>
+                <th colspan="3">Ridge Wind</th>
+                <th colspan="3"> Timberline Wind</th>
+            </tr>
+            <tr>
+                
+                <th>Temp</th>
+                <th>RH</th>
+                <th>H2O</th>
+                <th>New</th>
+                <th>Total</th>
+                <th>Speed</th>
+                <th>Dir</th>
+                <th>Gust</th>
+                <th>Speed</th>
+                <th>Dir</th>
+                <th>Gust</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+<td>11:00 Tue</td>
+<td>26</td>
+<td>83</td>
+<td>0.0</td>
+<td>0</td>
+<td>34.7</td>
+<td>7</td>
+<td>SSW</td>
+<td>9</td>
+<td>0</td>
+<td>SSW</td>
+<td>7</td>
+</tr>
+<tr>
+<td>10:00 Tue</td>
+<td>24</td>
+<td>88</td>
+<td>0.0</td>
+<td>0</td>
+<td>34.8</td>
+<td>9</td>
+<td>SW</td>
+<td>11</td>
+<td>3</td>
+<td>SW</td>
+<td>8</td>
+</tr>
+<tr>
+<td>09:00 Tue</td>
+<td>23</td>
+<td>92</td>
+<td>0.0</td>
+<td>0</td>
+<td>34.9</td>
+<td>11</td>
+<td>SW</td>
+<td>14</td>
+<td>5</td>
+<td>SW</td>
+<td>9</td>
+</tr>
+<tr>
+<td>08:00 Tue</td>
+<td>23</td>
+<td>93</td>
+<td>0.0</td>
+<td>0</td>
+<td>34.9</td>
+<td>11</td>
+<td>SW</td>
+<td>14</td>
+<td>7</td>
+<td>SW</td>
+<td>12</td>
+</tr>
+<tr>
+<td>07:00 Tue</td>
+<td>23</td>
+<td>95</td>
+<td>0.0</td>
+<td>0</td>
+<td>34.9</td>
+<td>12</td>
+<td>SSW</td>
+<td>21</td>
+<td>7</td>
+<td>SSW</td>
+<td>16</td>
+</tr>
+<tr>
+<td>06:00 Tue</td>
+<td>23</td>
+<td>95</td>
+<td>0.0</td>
+<td>0</td>
+<td>34.9</td>
+<td>11</td>
+<td>SW</td>
+<td>18</td>
+<td>7</td>
+<td>SW</td>
+<td>16</td>
+</tr>
+<tr>
+<td>05:00 Tue</td>
+<td>23</td>
+<td>94</td>
+<td>0.0</td>
+<td>0</td>
+<td>34.9</td>
+<td>12</td>
+<td>SW</td>
+<td>20</td>
+<td>8</td>
+<td>SW</td>
+<td>16</td>
+</tr>
+<tr>
+<td>04:00 Tue</td>
+<td>23</td>
+<td>92</td>
+<td>0.0</td>
+<td>0</td>
+<td>35.0</td>
+<td>12</td>
+<td>WSW</td>
+<td>24</td>
+<td>7</td>
+<td>WSW</td>
+<td>18</td>
+</tr>
+<tr>
+<td>03:00 Tue</td>
+<td>22</td>
+<td>91</td>
+<td>0.0</td>
+<td>0</td>
+<td>35.0</td>
+<td>19</td>
+<td>SW</td>
+<td>28</td>
+<td>8</td>
+<td>SW</td>
+<td>21</td>
+</tr>
+<tr>
+<td>02:00 Tue</td>
+<td>22</td>
+<td>91</td>
+<td>0.0</td>
+<td>0</td>
+<td>35.0</td>
+<td>16</td>
+<td>SSW</td>
+<td>28</td>
+<td>4</td>
+<td>SSW</td>
+<td>18</td>
+</tr>
+<tr>
+<td>01:00 Tue</td>
+<td>23</td>
+<td>93</td>
+<td>0.0</td>
+<td>0</td>
+<td>35.0</td>
+<td>18</td>
+<td>S</td>
+<td>28</td>
+<td>4</td>
+<td>S</td>
+<td>16</td>
+</tr>
+<tr>
+<td>00:00 Mon</td>
+<td>23</td>
+<td>93</td>
+<td>0.0</td>
+<td>0</td>
+<td>34.9</td>
+<td>21</td>
+<td>SSW</td>
+<td>30</td>
+<td>8</td>
+<td>SSW</td>
+<td>21</td>
+</tr>
+<tr>
+<td>23:00 Mon</td>
+<td>23</td>
+<td>94</td>
+<td>0.01</td>
+<td>0</td>
+<td>35.2</td>
+<td>25</td>
+<td>SSW</td>
+<td>38</td>
+<td>14</td>
+<td>SSW</td>
+<td>31</td>
+</tr>
+<tr>
+<td>22:00 Mon</td>
+<td>23</td>
+<td>94</td>
+<td>0.0</td>
+<td>0</td>
+<td>34.9</td>
+<td>23</td>
+<td>SW</td>
+<td>38</td>
+<td>12</td>
+<td>SW</td>
+<td>29</td>
+</tr>
+<tr>
+<td>21:00 Mon</td>
+<td>23</td>
+<td>92</td>
+<td>0.0</td>
+<td>0</td>
+<td>34.6</td>
+<td>21</td>
+<td>SW</td>
+<td>36</td>
+<td>10</td>
+<td>SW</td>
+<td>25</td>
+</tr>
+<tr>
+<td>20:00 Mon</td>
+<td>23</td>
+<td>92</td>
+<td>0.0</td>
+<td>0</td>
+<td>35.0</td>
+<td>25</td>
+<td>S</td>
+<td>35</td>
+<td>8</td>
+<td>S</td>
+<td>26</td>
+</tr>
+<tr>
+<td>19:00 Mon</td>
+<td>23</td>
+<td>90</td>
+<td>0.0</td>
+<td>0</td>
+<td>35.2</td>
+<td>18</td>
+<td>SW</td>
+<td>31</td>
+<td>10</td>
+<td>SW</td>
+<td>27</td>
+</tr>
+<tr>
+<td>18:00 Mon</td>
+<td>24</td>
+<td>90</td>
+<td>0.0</td>
+<td>0</td>
+<td>35.2</td>
+<td>15</td>
+<td>SSW</td>
+<td>30</td>
+<td>3</td>
+<td>SSW</td>
+<td>15</td>
+</tr>
+<tr>
+<td>17:00 Mon</td>
+<td>25</td>
+<td>88</td>
+<td>0.0</td>
+<td>0</td>
+<td>35.2</td>
+<td>19</td>
+<td>SSW</td>
+<td>29</td>
+<td>6</td>
+<td>SSW</td>
+<td>21</td>
+</tr>
+<tr>
+<td>16:00 Mon</td>
+<td>26</td>
+<td>86</td>
+<td>0.0</td>
+<td>0</td>
+<td>35.2</td>
+<td>12</td>
+<td>S</td>
+<td>22</td>
+<td>3</td>
+<td>S</td>
+<td>14</td>
+</tr>
+<tr>
+<td>15:00 Mon</td>
+<td>26</td>
+<td>90</td>
+<td>0.0</td>
+<td>0</td>
+<td>35.3</td>
+<td>5</td>
+<td>ENE</td>
+<td>19</td>
+<td>1</td>
+<td>ENE</td>
+<td>14</td>
+</tr>
+<tr>
+<td>14:00 Mon</td>
+<td>28</td>
+<td>78</td>
+<td>0.0</td>
+<td>0</td>
+<td>35.3</td>
+<td>9</td>
+<td>SW</td>
+<td>21</td>
+<td>3</td>
+<td>SW</td>
+<td>14</td>
+</tr>
+<tr>
+<td>13:00 Mon</td>
+<td>28</td>
+<td>74</td>
+<td>0.0</td>
+<td>0</td>
+<td>35.3</td>
+<td>12</td>
+<td>SE</td>
+<td>31</td>
+<td>4</td>
+<td>SE</td>
+<td>20</td>
+</tr>
+<tr>
+<td>12:00 Mon</td>
+<td>30</td>
+<td>72</td>
+<td>0.0</td>
+<td>0</td>
+<td>35.4</td>
+<td>16</td>
+<td>SW</td>
+<td>33</td>
+<td>6</td>
+<td>SW</td>
+<td>22</td>
+</tr>
+<tr>
+<td>11:00 Mon</td>
+<td>29</td>
+<td>74</td>
+<td>0.0</td>
+<td>0</td>
+<td>35.4</td>
+<td>18</td>
+<td>SW</td>
+<td>33</td>
+<td>6</td>
+<td>SW</td>
+<td>22</td>
+</tr>
+
+        </tbody>
+        </tbody>
+    </table>
+</body>
+</html>
