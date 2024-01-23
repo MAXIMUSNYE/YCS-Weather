@@ -3,6 +3,7 @@ import sys
 import webbrowser
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 import shutil
+import threading
 import assemblymain
 
 def copy_file(source_file, destination_file):
@@ -13,13 +14,6 @@ def copy_file(source_file, destination_file):
         print(f"File '{source_file}' not found.")
     except Exception as e:
         print(f"An error occurred: {str(e)}")
-
-if __name__ == "__main__":
-    source_file = "modified_HTML_file.html" # Replace with the source file path
-    destination_file =  "index.html" # Replace with the destination file path
-
-    copy_file(source_file, destination_file)
-
 
 def start_local_server(port=8000):
     # Change to the directory where your HTML file is located
@@ -38,12 +32,33 @@ def start_local_server(port=8000):
     webbrowser.open(url)
 
     try:
-        # Serve the files indefinitely until interrupted
+        # Serve the files indefinitely until interrupted or for one minute
         httpd.serve_forever()
     except KeyboardInterrupt:
         # Terminate the server when Ctrl+C is pressed
         pass
 
+def stop_server_after_timeout(server, timeout):
+    import time
+    time.sleep(timeout)
+    server.shutdown()
+    print("Server stopped after one minute.")
+
 if __name__ == "__main__":
-    port = 8000  # You can change the port number if needed
-    start_local_server(port)
+    # Set the port number and duration (in seconds)
+    port = 8000
+    duration = 60  # One minute (60 seconds)
+
+    # Copy the HTML file
+    source_file = "modified_HTML_file.html"  # Replace with the source file path
+    destination_file = "index.html"  # Replace with the destination file path
+    copy_file(source_file, destination_file)
+
+    # Start the local server in a separate thread
+    server_thread = threading.Thread(target=start_local_server, args=(port,))
+    server_thread.daemon = True  # Terminate the thread when the main program exits
+    server_thread.start()
+
+    # Start a timer to stop the server after the specified duration
+    timer_thread = threading.Thread(target=stop_server_after_timeout, args=(HTTPServer, duration))
+    timer_thread.start()
