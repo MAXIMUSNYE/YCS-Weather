@@ -52,6 +52,7 @@ def plot_data_from_csv():
     axs[0].set_yticks([0,5,10,15,20,25,30,35,40] )
     axs[0].legend()
     axs[0].grid(True)
+    
 
     # Plotting Temperature and Wind Chill
     axs[1].plot(data['Hour'], data['AVG_Temp'], marker='o', color='red', label='AVG_Temp')

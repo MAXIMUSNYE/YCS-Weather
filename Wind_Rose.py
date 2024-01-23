@@ -6,7 +6,7 @@ import matplotlib as mpl
 import math
 
 mpl.rcParams['font.size'] = 18  # Adjust the font size as needed
-mpl.rcParams['font.family'] = 'Helvetica'  # Use the Helvetica font family
+#mpl.rcParams['font.family'] = 'Helvetica'  # Use the Helvetica font family
 
 
 def read_wind_data(filename):
