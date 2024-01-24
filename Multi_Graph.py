@@ -109,7 +109,6 @@ def plot_data_from_csv():
     axs[3].text(0.99, 0.93, label_text, transform=axs[3].transAxes,
                 fontsize=12, color=label_color, ha='right', va='top', bbox=bbox_props)
 
-
     #axs[3].set_title('Snow Water Equiv.')
     axs[3].set_ylabel('Inches SWE')#, rotation='horizontal', labelpad=20)
 
