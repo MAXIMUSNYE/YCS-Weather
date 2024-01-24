@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import io
-
+#pee pee poo poo
 #plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1, wspace=0.4, hspace=0.4)
 # TODO create new snow height plus swe
 #       legends horisontal in a box on side
