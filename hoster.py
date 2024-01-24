@@ -63,7 +63,7 @@ for i in range(0,9999999999999999999):
 
 
     # Set the port number and duration (in seconds)
-    port = 8000
+    port = 9860 # 8000
     duration = 300  # One minute (60 seconds)
 
     # Copy the HTML file
@@ -76,7 +76,7 @@ for i in range(0,9999999999999999999):
     server_thread.daemon = True  # Terminate the thread when the main program exits
     server_thread.start()
     import time
-    time.sleep(30)
+    time.sleep(277)
     try:
         HTTPServer.server_close()
 
