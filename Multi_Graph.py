@@ -2,18 +2,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import io
-#pee pee poo poo
-#plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1, wspace=0.4, hspace=0.4)
-# TODO create new snow height plus swe
-#       legends horisontal in a box on side
-#       fix colors
-#       add 24 hour high low avrade and daily toatals
-#       ** fix hour raph and color code for night
-#       fix wind chill math
-
-# def calculate_wind_chill(temperature, wind_speed):
-
-#     return 13.12 + 0.6215 * temperature - 11.37 * (wind_speed ** 0.16) + 0.3965 * temperature * (wind_speed ** 0.16)
 
 def calculate_wind_chill(temperature, wind_speed):
     """
@@ -84,63 +72,37 @@ def plot_data_from_csv():
         axs[3].text(0.99, 0.93, label_text, transform=axs[2].transAxes,
                     fontsize=12, color=label_color, ha='right', va='top', bbox=bbox_props)
 
-    # Plotting Precipitation with fill
     axs[2].plot(data['Hour'], data['NewSnow'], marker='o', color='green')
     axs[2].fill_between(data['Hour'], data['NewSnow'], color='green', alpha=0.3)
-    #axs[2].set_title('NewSnow')
     axs[2].set_xlabel('Hour')
     axs[2].set_ylabel('Inches New Snow' )#, rotation='horizontal', labelpad=20)
-    #axs[2].set_yticks([0,2,4,6,8,10,12,14,16,18,20,22,24])
     axs[2].set_yticks([0,5,10,15,20,25])
     axs[2].grid(True)
-
-    # Setting x-axis labels for every hour
     axs[2].set_xticks(data['Hour'])
     axs[2].set_xticklabels(hrlables)
 
     axs[3].bar(data['Hour'], data['H2O'], color='red', zorder = 2 )# marker='o',
 
     label_text = f'Total SWE {sum(list(data["H2O"])):.2f}"'
-    #label_text = f'Total SWE {sum(list(data["H2O"]))}"'
     label_color = 'black'
     bbox_props = dict(boxstyle="square,pad=0.3", edgecolor=label_color, facecolor="white")
 
-    # Add the labeled box to the top right corner
     axs[3].text(0.99, 0.93, label_text, transform=axs[3].transAxes,
                 fontsize=12, color=label_color, ha='right', va='top', bbox=bbox_props)
 
-    #axs[3].set_title('Snow Water Equiv.')
-    axs[3].set_ylabel('Inches SWE')#, rotation='horizontal', labelpad=20)
+    axs[3].set_ylabel('Inches SWE')
 
-    # Add additional notes or text on the side of the graph
-    #fig.text(0.01, 0.52, 'Your notes here', ha='left', va='center', rotation='horizontal')
-
-  #  axs[3].set_yticks([0.0,0.025,0.05,0.075,0.1,0.125,0.15] )
     yticks = [0.0, 0.05, 0.1, 0.15, 0.2]
     axs[3].set_yticks(yticks)
 
-    # Set custom y-tick labels with the top label left blank
     ytick_labels = ['0.0', '0.05', '0.1', '0.15', '']
     axs[3].set_yticklabels(ytick_labels)
 
     axs[3].grid(True, zorder=1)
 
-
-    # for ax in axs:
-    #     # Get the bounding box in figure coordinates
-    #     bbox = ax.get_tightbbox(fig.canvas.get_renderer())
-    #     x0, y0, width, height = bbox.transformed(fig.transFigure.inverted()).bounds
-    #     # slightly increase the very tight bounds:
-    #     xpad = 0.05 * width
-    #     ypad = 0.05 * height
-    #     # Add the rectangle
-    #     fig.add_artist(plt.Rectangle((x0-xpad, y0-ypad), width+3.32*xpad, height+6*ypad, edgecolor='red', linewidth=2, fill=False))
-
-
-    # Adjust layout
     plt.tight_layout()
     plt.savefig("meterio.jpg", format="jpeg")
-    #plt.show()
+    plt.show()
 
 plot_data_from_csv()
 

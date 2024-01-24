@@ -1,91 +1,63 @@
+
+
 import requests
 from bs4 import BeautifulSoup
-import requests
-from bs4 import BeautifulSoup
-div_element = ""
-line = 0
-# Define the URL of the web page containing the image
+from datetime import datetime, timedelta
+import os
+
+# File to store the last checked date and avalanche rating
+file_path = 'avalanche_rating.txt'
+
+def avalanche_safety_color(rating):
+    ratings = {
+        "low": "green",
+        "moderate": "yellow",
+        "considerable": "orange",
+        "high": "red",
+        "very high": "black"
+    }
+    return ratings.get(rating.lower(), "unknown")
+
+def get_avalanche_rating(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        soup = BeautifulSoup(response.text, 'html.parser')
+        div_element = soup.find('div', class_='hazard-rating-container')
+        if div_element:
+            line = str(div_element).split(".png")[0].split('/images/hazard_ratings/')[1]
+            return line.lower()
+        else:
+            print('Div element not found.')
+    else:
+        print('Failed to fetch the web page.')
+    return None
+
+def check_and_update_rating(url, file_path):
+    # Check if the file exists and is not outdated
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as file:
+            lines = file.readlines()
+            last_checked_date = datetime.fromisoformat(lines[1].strip())
+            if datetime.now() - last_checked_date < timedelta(days=1):
+                return lines[0].strip(), last_checked_date
+    
+    # If file doesn't exist or data is outdated, fetch new data
+    rating = get_avalanche_rating(url)
+    if rating:
+        with open(file_path, 'w') as file:
+            file.write(f'{rating}\n')
+            file.write(f'{datetime.now().isoformat()}')
+        return rating, datetime.now()
+    else:
+        return None, None
+
+# URL to check
 url = 'https://www.mtavalanche.com/forecast/northern-gallatin'
 
-def avalanche_safety_color(rating):
-    """
-    Return the color corresponding to the avalanche safety rating.
-
-    :param rating: A string representing the avalanche safety rating.
-    :return: A string representing the corresponding color.
-    """
-    ratings = {
-        "low": "green",
-        "moderate": "yellow",
-        "considerable": "orange",
-        "high": "red",
-        "very high": "black"
-    }
-    
-    return ratings.get(rating.lower(), "unknown")
-
-# Send an HTTP GET request to the URL
-response = requests.get(url)
-
-# Check if the request was successful (status code 200)
-if response.status_code == 200:
-    # Parse the HTML content of the page
-    soup = BeautifulSoup(response.text, 'html.parser')
-
-    # Find the div element with the class "hazard-rating-container"
-    div_element = soup.find('div', class_='hazard-rating-container')
-
-    if div_element:
-        # Print the extracted div element
-        print(div_element)
-        # # The HTML string
-        # html_string = div_element
-
-        # # Parse the HTML string
-        # soup = BeautifulSoup(html_string, 'html.parser')
-
-        # # Find the <img> tag within the <div> element
-        # img_tag = soup.find('div', class_='hazard-rating-container').find('img')
-
-        # # Extract the "title" attribute from the <img> tag
-        # considerable_text = img_tag.get('title', '')
-
-        # # Print the extracted text (in this case, "Considerable")
-        # print(considerable_text)
-
-    else:
-        print('Div element not found.')
-    print('getting avy danger')
-    split2 = '/images/hazard_ratings/'
-    line = str(div_element).split(".png")
-    line = line[0].split(split2)[1]
-    print(f'avy danger: {line}')
+# Check and update the rating
+rating, last_checked_date = check_and_update_rating(url, file_path)
+if rating:
+    color = avalanche_safety_color(rating)
+    print(f"Avalanche rating: {rating}, Color: {color}, Last checked: {last_checked_date}")
 else:
-    print('Failed to fetch the web page.')
-
-
-def avalanche_safety_color(rating):
-    """
-    Return the color corresponding to the avalanche safety rating.
-
-    :param rating: A string representing the avalanche safety rating.
-    :return: A string representing the corresponding color.
-    """
-    ratings = {
-        "low": "green",
-        "moderate": "yellow",
-        "considerable": "orange",
-        "high": "red",
-        "very high": "black"
-    }
-    
-    return ratings.get(rating.lower(), "unknown")
-
-
-
-# Example usage
-rating = line.lower()
-color = avalanche_safety_color(rating)
-
-
-
+    print("Failed to get the avalanche rating.")
