@@ -70,4 +70,3 @@ def shortcast_get():
 
 
 print("NOAA weeks forcast")
-
