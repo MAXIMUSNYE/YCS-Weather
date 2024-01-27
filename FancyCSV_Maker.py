@@ -97,22 +97,25 @@ for row in columns_list[1:]:
 input_file = "Fancy_CSV.csv"
 df = pd.read_csv(input_file)
 
-wind_degrees = list(df['Ridge_dir'])
-cardinal_directions = [wind_direction_to_cardinal(d) for d in wind_degrees]
-wind_degrees = list(df['TW_Dir'])
-cardinal_directions = [wind_direction_to_cardinal(d) for d in wind_degrees]
+# Assuming df is your DataFrame and wind_direction_to_cardinal is defined correctly
 
-#print(cardinal_directions)
+# Convert Ridge_dir degrees to cardinal directions
+ridge_wind_degrees = list(df['Ridge_dir'])
+ridge_cardinal_directions = [wind_direction_to_cardinal(d) for d in ridge_wind_degrees]
 
-# Create a new column from the provided list
-new_column_data = daterow
+# Convert TW_Dir degrees to cardinal directions
+tw_wind_degrees = list(df['TW_Dir'])
+tw_cardinal_directions = [wind_direction_to_cardinal(d) for d in tw_wind_degrees]
 
-# Insert the new column as the first column in the DataFrame
-df.drop(df.columns[7], axis=1, inplace=True)
-df.insert(7, 'TW_Dir', cardinal_directions)
-df.drop(df.columns[4], axis=1, inplace=True)
-df.insert(4, 'Ridge_dir', cardinal_directions)
-df.insert(0, 'DateTime', new_column_data)
+# Update the DataFrame
+df.drop('Ridge_dir', axis=1, inplace=True)
+df.insert(4, 'Ridge_dir', ridge_cardinal_directions)  # 4 is the index where you want to insert the column
+
+df.drop('TW_Dir', axis=1, inplace=True)
+df.insert(7, 'TW_Dir', tw_cardinal_directions)  # 7 is the index where you want to insert the column
+
+# Assuming 'DateTime' needs to be added from 'daterow'
+df.insert(0, 'DateTime', daterow)
 
 #print()
 
