@@ -19,17 +19,10 @@ def run_server(port):
     httpd = HTTPServer(('', port), SimpleHTTPRequestHandler)
     httpd.serve_forever()
 
-def start_server(port, duration):
-    # Start the server in a separate thread
+def start_server(port):
     server_thread = threading.Thread(target=run_server, args=(port,))
+    server_thread.daemon = True
     server_thread.start()
-
-    # Wait for the specified duration
-    time.sleep(duration)
-
-    # Stop the server
-    print("Stopping server...")
-    os._exit(0)
 
 def run_assembly_main():
     python_executable = sys.executable
@@ -46,11 +39,13 @@ while True:
     # Run assemblymain.py to refresh the HTML file
     run_assembly_main()
 
-    # Copy the refreshed HTML file and start the server
+    # Copy the refreshed HTML file
     copy_file(source_file, destination_file)
-    start_server(port, duration)
 
-    # Wait for the server to stop
+    # Start the server
+    start_server(port)
+
+    # Wait for the specified duration
     time.sleep(duration)
 
     print("Restarting server...")

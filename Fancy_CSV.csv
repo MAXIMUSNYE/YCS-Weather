@@ -1,4 +1,5 @@
 DateTime,AVG_Temp,AVG_RH,H2O,NewSnow,ToatalSnow,Ridge_Speed,Ridge_dir,Ridge_Gust,TW_Speed,TW_Dir,TW_Gust
+21:00 Fri,16,65,0.0,0,33.8,14,SW,23,8,SW,18
 20:00 Fri,17,62,0.0,0,33.7,15,SW,24,9,SW,19
 19:00 Fri,17,61,0.0,0,33.7,18,SW,25,9,SW,19
 18:00 Fri,18,63,0.0,0,33.7,21,SSW,29,5,SSW,15
@@ -23,4 +24,3 @@ DateTime,AVG_Temp,AVG_RH,H2O,NewSnow,ToatalSnow,Ridge_Speed,Ridge_dir,Ridge_Gust
 23:00 Thu,18,94,0.0,0,33.6,7,NW,12,2,NW,10
 22:00 Thu,19,94,0.0,0,33.6,7,NW,13,4,NW,12
 21:00 Thu,19,96,0.0,0,33.8,8,NW,12,6,NW,13
-20:00 Thu,20,96,0.0,0,33.8,6,NW,12,7,NW,14
