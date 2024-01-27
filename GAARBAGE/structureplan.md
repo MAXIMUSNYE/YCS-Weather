@@ -59,29 +59,4 @@
 └── CHANGELOG.md                    # Documenting changes and updates
 """
 
-pers  = 0
-import pandas as pd
-
-data = pd.read_csv("GAARBAGE/2weekstart.csv")
-print(list(data['Thursday']).count("Andy"))
-
-column_name = 'Thursday' 
-andy_count = list(data[column_name]).count("Andy")
-print(f"Count of 'Andy' in {column_name}: {andy_count}")
-
-
-for column in data.columns:
-    count = data[column].apply(lambda x: x.count("EHQ") if isinstance(x, str) else 0).sum()
-    print(f"Column '{column}': Count of 'Andy' = {count}")
-
-first_column = data.iloc[:, 0].tolist()
-
-data = data.applymap(lambda x: x if x in ["OFF",'Andy','Dispatch', 'EHQ'] else "MAIN")
-
-
-
-data.insert(0, "New_Column", first_column)
-
-
-data.to_csv("GAARBAGE/modified_2weekstart.csv", index=False)
 
