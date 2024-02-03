@@ -1,6 +1,8 @@
 import csv
 import pandas as pd
 import random
+from colorama import Fore, Style
+
 
 class Person:
     def __init__(self, name, level=None):
@@ -59,21 +61,15 @@ for name, person in persons.items():
 
 df = pd.DataFrame(index=names, columns=headers)
 df = df.fillna("n")  # Filling all cells with None
+multi_columns = pd.MultiIndex.from_tuples([(day, i // 7 + 1) for i, day in enumerate(headers)], names=['Day', 'Week'])
 
-for name , person in persons.items():
-    for day in person.work_days:
-        df.at[name, day] = "workn"
+# Set the MultiIndex as the columns of the DataFrame
+df.columns = multi_columns
 
-print(df)
+# Fill the DataFrame with 'n' values
+df = df.fillna("n")  # Filling all cells with 'n'
 
-refrencedays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-
-#mtn = ['MD','E4','A', 'A', 'A', 'E', 'E','E', 'E', 'E','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M']
-dayno =  [x for x in range(1, 32)]
-
-# Create DataFrame with None values
-df2 = pd.DataFrame( columns=dayno)#index=mtn,
-df2 = df2.fillna("OFF")
+#df.loc["Nye", ("Monday", 1)] = "Your Value"
 
 level4s =[]
 doghands = []
@@ -84,19 +80,12 @@ for name , person in persons.items():
     if person.dog == True:
         doghands.append(name)
 
-
-
-def get_week_day(daynum):
-    weekday = refrencedays[(daynum-1)]
-    return weekday
-
 def isworking(day,person):
     print(persons[person].work_days)
     if day in persons[person].work_days:
         
         return True
     return False
-
 
 
 def getworkingroster(day):
@@ -114,28 +103,78 @@ def getworkingdogs(workingpepole):
     return werkndogs
 
 
-def fill_day(wkday):
+def fill_day(wkday,week):
     # get working, get working dogs, fill dog, get lvl  4s fill egleise 4, check if person has worked andisite
     # fill andisite,  check egleise , fill egleise, fill the rest on main, check for lvel 4s on main
     #wkday = get_week_day(column)
-
     working = getworkingroster(wkday)
+    print(working)
+
+    #Dogs
     workingdogs = getworkingdogs(working)
     dog_hand = random.choice(workingdogs)
-    print(dog_hand, wkday)
-    df.at[dog_hand,wkday] = "doggo"
+    working.remove(dog_hand)
+    df.at[dog_hand,(wkday,week)] = "doggo"
+    print(working)
+    #egleise lvl4s
+    l4on = []
+    for person in working:
+        if persons[person].level == 4:
+            l4on.append(person)
+    E4 = random.choice(l4on)
+    working.remove(E4)
+    df.at[E4,(wkday,week)] = "EL4"
+    print(working)
+
+    #fill egelise
+    for i in range(0,5):
+        peep = random.choice(working)
+        working.remove(peep)
+        df.at[peep,(wkday,week)] = "EGL"
+    print(working)
+    
+    #fill andy
+    for i in range(0,3):
+        peep = random.choice(working)
+        working.remove(peep)
+        df.at[peep,(wkday,week)] = "AND"
+    print(working)
+    
+    for i in working:
+        df.at[i,(wkday,week)] = "PHQ"
+    print("\n",working)
 
 
+weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+for week in range(1,4):
+    for day in weekdays:
+        fill_day(day,week)
 
-fill_day('Saturday')
+#fill_day(weekdays[5],1)
+print(df)
 
-#df2 = df.fillna("OFF")
+#df.to_csv('GAARBAGE/SchedghTest.csv', index=True)
 
-#df2.at[3,"MD"] = "dogo"
-#print(df.iloc[4])
-row_name = df.index[3]  # Get the index name of the fourth row
-row = df.loc[row_name]
-print(row_name,list(row))
+def dframe():
+    return df
 
 
-df.at['Gayton', [3]] = "doggo"
+# # Create a sample DataFrame
+# data = {'Name': ['Alice', 'Bob', 'Charlie'],
+#         'Status': ['Working', 'Not Working', 'Working']}
+# df = pd.DataFrame(data)
+
+# Define colors for specific values
+# color_mapping = {
+#     'PHQ': Fore.GREEN,
+#     'EGL': Fore.RED,
+# }
+
+# # Apply color to the DataFrame values
+# def color_text(value):
+#     return f"{color_mapping.get(value, Fore.RESET)}{value}{Style.RESET_ALL}"
+
+# colored_df = df.applymap(color_text)
+
+# # Print the colored DataFrame
+# print(colored_df)

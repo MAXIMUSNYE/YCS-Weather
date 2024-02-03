@@ -72,7 +72,7 @@ print(f"Count of 'Andy' in {column_name}: {andy_count}")
 
 for column in data.columns:
     count = data[column].apply(lambda x: x.count("EHQ") if isinstance(x, str) else 0).sum()
-    print(f"Column '{column}': Count of 'Andy' = {count}")
+    print(f"Column '{column}': Count of 'EHQ' = {count}")
 
 first_column = data.iloc[:, 0].tolist()
 
@@ -84,4 +84,6 @@ data.insert(0, "New_Column", first_column)
 
 
 data.to_csv("GAARBAGE/modified_2weekstart.csv", index=False)
+
+
 
