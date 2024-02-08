@@ -38,13 +38,11 @@ while True:
 
     # Run assemblymain.py to refresh the HTML file
     run_assembly_main()
-
+    time.sleep(15)
     # Copy the refreshed HTML file
     copy_file(source_file, destination_file)
-
     # Start the server
     start_server(port)
-
     # Wait for the specified duration
     time.sleep(duration)
 
