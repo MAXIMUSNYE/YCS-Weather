@@ -33,7 +33,7 @@ def run_assembly_main():
 while True:
     source_file = "modified_HTML_file.html"
     destination_file = "index.html"
-    port = 9860
+    port = 8000
     duration = 1500  # Duration in seconds
 
     # Run assemblymain.py to refresh the HTML file
