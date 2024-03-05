@@ -36,7 +36,7 @@ try:
     while True:
         source_file = "modified_HTML_file.html"
         destination_file = "index.html"
-        refresh_interval = 1500  # Interval to refresh HTML file in seconds
+        refresh_interval = 21600  # Interval to refresh HTML file in seconds
 
         # Run assemblymain.py to refresh the HTML file
         run_assembly_main()
