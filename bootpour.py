@@ -31,7 +31,7 @@ while True:
     run_assembly_main()
 
     # Wait a bit to ensure assemblymain.py has finished executing
-    time.sleep(15)
+    time.sleep(25)
 
     # Copy the refreshed HTML file
     copy_file(source_file, destination_file)
